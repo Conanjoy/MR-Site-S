@@ -1,7 +1,7 @@
 from flask import Flask
 from threading import Thread
 
-app = Flask('')
+app = Flask(__name__)
 
 @app.route('/')
 def home():
@@ -14,5 +14,5 @@ def keep_alive():
     t = Thread(target = run)
     t.start()
 
-
-keep_alive()
+if __name__ == "__main__":
+    run()
