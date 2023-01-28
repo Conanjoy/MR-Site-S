@@ -1,6 +1,9 @@
 import time
 import requests
 import os
+import subprocess
+
+subprocess.Popen(f"gunicorn keep_alive:app --bind 0.0.0.0:8080", shell=True)
 
 BASE_URL = os.environ.get('BASE_URL', None)
 try:
