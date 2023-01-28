@@ -49,7 +49,8 @@ RUN /usr/bin/crontab /etc/cron.d/crontab
 # Make the entrypoint executable
 RUN chmod +x entrypoint.sh
 
-# Set the entrypoint to our entrypoint.sh                                                                                                                     
-ENTRYPOINT ./app/entrypoint.sh
+# Set the entrypoint to our entrypoint.sh
 
-CMD cron -f -L 2
+ENTRYPOINT ["/app/entrypoint.sh"] 
+
+CMD ["cron","-f", "-l", "2"]
