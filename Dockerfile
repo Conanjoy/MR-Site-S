@@ -52,6 +52,4 @@ RUN chmod +x entrypoint.sh
 
 # Set the entrypoint to our entrypoint.sh
 
-ENTRYPOINT ["/app/entrypoint.sh"] 
-
-CMD ["cron","-f", "-l", "2"]
+CMD ["bash", "entrypoint.sh", "cron","-f", "-l", "2"]
