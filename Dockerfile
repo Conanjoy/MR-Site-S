@@ -29,6 +29,9 @@ RUN apt-get update && apt-get install -y \
   && which cron \
   && rm -rf /etc/cron.*/*
 
+RUN ln -fs /usr/share/zoneinfo/$TZ /etc/localtime \
+    && dpkg-reconfigure -f noninteractive tzdata
+
 
 # Download and install Chrome
 RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key add - \ 
@@ -41,7 +44,7 @@ COPY . .
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-COPY ./crontab /etc/cron.d/crontab
+COPY crontab /etc/cron.d/crontab
 
 RUN chmod 0644 /etc/cron.d/crontab
 
