@@ -1804,8 +1804,8 @@ def main():
     LANG, GEO, TZ = getCCodeLangAndOffset()
     
     # Enable virtual display if headless argument is present and proxies require authentication (Linux)
-    if platform.system() == "Linux" and ARGS.headless and ARGS.proxies and ARGS.authproxies:
-        display = Display(visible=0, size=(800, 600))
+    if platform.system() == "Linux":
+        display = Display(visible=0, size=(900, 800))
         display.start()
     
     if ARGS.proxies:
@@ -1831,7 +1831,7 @@ def main():
         logs()
         farmer()
     # Disable virtual display if it has been activated (Linux)
-    if platform.system() == "Linux" and ARGS.headless and ARGS.proxies and ARGS.authproxies:
+    if platform.system() == "Linux":
         display.stop()
     end = time.time()
     delta = end - start
