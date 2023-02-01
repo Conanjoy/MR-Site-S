@@ -1,4 +1,4 @@
-FROM reganqbbot/msr:u18.04
+FROM reganqbbot/msr
 
 
 # Download and install Chrome
