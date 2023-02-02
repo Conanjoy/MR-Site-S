@@ -1678,6 +1678,9 @@ def createMessage():
         elif value[1]['Last check'] == 'Unusual activity detected !':
             status = '⚠️ Unusual activity detected'
             message += f"{index}. {value[0]}\n📝 Status: {status}\n\n"
+        elif value[1]['Last check'] == 'Requires manual check!':
+            status = '⚠️ Requires manual check'
+            message += f"{index}. {value[0]}\n📝 Status: {status}\n\n"
         elif value[1]['Last check'] == 'Unknown error !':
             status = '⛔️ Unknow error occured'
             message += f"{index}. {value[0]}\n📝 Status: {status}\n\n"
@@ -1695,7 +1698,7 @@ def createMessage():
 def sendReportToMessenger(message):
     if ARGS.telegram:
         t = get_notifier('telegram') 
-        t.notify(message=message, token=ARGS.telegram[0], chat_id=ARGS.telegram[1])
+        t.notify(message=message, token=ARGS.telegram[0], chat_id=ARGS.telegram[1], parse_mode= 'Markdown')
 
 def farmer():
     '''
