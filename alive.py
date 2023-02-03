@@ -11,5 +11,8 @@ except:
 
 if BASE_URL is not None:
     while True:
-        time.sleep(180)
-        status = requests.get(BASE_URL).status_code
+        time.sleep(600)
+        try:
+            status = requests.get(BASE_URL).status_code
+        except:
+            pass
