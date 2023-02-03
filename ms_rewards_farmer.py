@@ -1698,7 +1698,7 @@ def createMessage():
 def sendReportToMessenger(message):
     if ARGS.telegram:
         t = get_notifier('telegram') 
-        t.notify(message=message, token=ARGS.telegram[0], chat_id=ARGS.telegram[1], parse_mode= 'Markdown')
+        t.notify(message=message, token=ARGS.telegram[0], chat_id=ARGS.telegram[1], parse_mode= 'markdown')
 
 def farmer():
     '''
