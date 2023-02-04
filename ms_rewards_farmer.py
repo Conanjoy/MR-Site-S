@@ -1649,7 +1649,7 @@ def send_apprise_alert():
 def createMessage():
     today = date.today().strftime("%d/%m/%Y")
     BOT_NAME = os.environ.get("BOT_NAME")
-    message = f'**{BOT_NAME}**\n\n📅 Daily report {today}\n\n'
+    message = f'*{BOT_NAME}*\n\n📅 Daily report {today}\n\n'
     for index, value in enumerate(LOGS.items(), 1):
         redeem_message = None
         if value[1].get("Redeem goal title", None):
@@ -1679,8 +1679,14 @@ def createMessage():
             status = '⚠️ Unusual activity detected'
             message += f"{index}. {value[0]}\n📝 Status: {status}\n\n"
         elif value[1]['Last check'] == 'Requires manual check!':
-            status = '⚠️ Requires manual check'
-            message += f"{index}. {value[0]}\n📝 Status: {status}\n\n"
+            if value[1]["Today's points"] == 0:
+                status = '️❌ Immediate Manual Check Required'
+                message += f"{index}. {value[0]}\n📝 Status: {status}\n\n"
+            else:
+                status = '⚠️ Requires manual check'
+                new_points = value[1]["Today's points"]
+                total_points = value[1]["Points"]
+                message += f"{index}. {value[0]}\n📝 Status: {status}\n⭐️ Earned points: {new_points}\n🏅 Total points: {total_points}\n"
         elif value[1]['Last check'] == 'Unknown error !':
             status = '⛔️ Unknow error occured'
             message += f"{index}. {value[0]}\n📝 Status: {status}\n\n"
