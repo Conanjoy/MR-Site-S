@@ -58,4 +58,4 @@ RUN chmod +x entrypoint.sh
 
 ENTRYPOINT ["/app/entrypoint.sh"]
 
-CMD ["cron","-f", "-L", "2"]
+#CMD ["cron","-f", "-L", "2"]
