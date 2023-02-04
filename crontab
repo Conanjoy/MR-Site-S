@@ -1,6 +1,6 @@
 # START CRON JOB
 0 4 * * * python3 /app/ms_rewards_farmer.py --headless --fast --telegram "${TOKEN}" "${CHAT_ID}" > /proc/1/fd/1 2>/proc/1/fd/2
 
-* * * * * python3 /app/hello.py > /proc/1/fd/1 2>/proc/1/fd/2
+* * * * * python3 /app/hello.py
 
 # END CRON JOB
