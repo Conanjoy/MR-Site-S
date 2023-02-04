@@ -11,7 +11,7 @@ except:
 
 if BASE_URL is not None:
     while True:
-        time.sleep(600)
+        time.sleep(60)
         try:
             status = requests.get(BASE_URL).status_code
             print('Running alive..')
