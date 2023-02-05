@@ -42,7 +42,6 @@ RUN apt-get update && apt-get -y install google-chrome-stable && rm -rf /var/lib
 
 # Add often-changed files in order to cache above
 COPY . .
-ADD ./accounts.json .
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
