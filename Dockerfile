@@ -10,6 +10,7 @@ RUN chmod 777 /app
 
 # Install deps from APT
 RUN apt-get update && apt-get install -y \
+  bash \
   procps \
   inetutils-ping \
   gunicorn \
