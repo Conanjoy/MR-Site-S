@@ -10,7 +10,6 @@ RUN chmod 777 /app
 
 # Install deps from APT
 RUN apt-get update && apt-get install -y \
-  bash \
   procps \
   inetutils-ping \
   gunicorn \
@@ -59,6 +58,6 @@ RUN chmod +x entrypoint.sh
 
 # Set the entrypoint to our entrypoint.sh
 
-CMD ["bash", "/entrypoint.sh"]
+ENTRYPOINT ["/app/entrypoint.sh"]
 
 #END
