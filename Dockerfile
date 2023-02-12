@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM python:3.10-slim-bullseye
 
 # Set default environment variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -10,7 +10,8 @@ RUN chmod 777 /app
 
 # Install deps from APT
 RUN apt-get update && apt-get install -y \
-  iputils-ping \
+  procps \
+  inetutils-ping \
   gunicorn \
   cron \
   vim \
@@ -51,11 +52,12 @@ RUN chmod 0644 /etc/cron.d/crontab
 
 RUN crontab /etc/cron.d/crontab
 
+
 # Make the entrypoint executable
 RUN chmod +x entrypoint.sh
 
 # Set the entrypoint to our entrypoint.sh
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["bash", "/app/entrypoint.sh"]
 
-#CMD ["cron","-f", "-L", "2"]
+#END

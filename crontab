@@ -1,4 +1,5 @@
 # START CRON JOB
-0 4 * * * cd /app && python3 /app/ms_rewards_farmer.py --headless --fast --telegram "${TOKEN}" "${CHAT_ID}" > /proc/1/fd/1 2>/proc/1/fd/2
+58 3 * * * chmod +x /app/clean_mem.sh && /bin/sh /app/clean_mem.sh > /proc/1/fd/1 2>/proc/1/fd/2
+0 4 * * * cd /app && python3 /app/ms_rewards_farmer.py --session --headless --fast --telegram "${TOKEN}" "${CHAT_ID}" > /proc/1/fd/1 2>/proc/1/fd/2
 
 # END CRON JOB

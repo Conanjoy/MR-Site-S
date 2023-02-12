@@ -4,7 +4,7 @@ app = Flask(__name__)
 
 @app.route('/')
 def home():
-    return "Program is online/active, all thanks to UpTimeRobot!"
+    return "App is Running..."
 
 if __name__ == "__main__":
     app.run()
