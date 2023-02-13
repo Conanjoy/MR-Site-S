@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye
+FROM ubuntu:22.04
 
 # Set default environment variables
 ENV DEBIAN_FRONTEND=noninteractive
