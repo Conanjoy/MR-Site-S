@@ -1,4 +1,4 @@
-FROM python:3.10-slim-bullseye
+FROM reganqbbot/msr:latest
 
 # Set default environment variables
 ENV DEBIAN_FRONTEND=noninteractive
