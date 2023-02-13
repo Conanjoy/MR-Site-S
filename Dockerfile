@@ -1,4 +1,4 @@
-FROM ubuntu:22.04
+FROM python:3.10-slim-bullseye
 
 # Set default environment variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -46,18 +46,12 @@ COPY . .
 
 RUN pip3 install --no-cache-dir -r requirements.txt
 
-COPY crontab /etc/cron.d/crontab
-
-RUN chmod 0644 /etc/cron.d/crontab
-
-RUN crontab /etc/cron.d/crontab
-
 
 # Make the entrypoint executable
 RUN chmod +x entrypoint.sh
 
 # Set the entrypoint to our entrypoint.sh
 
-CMD ["bash", "entrypoint.sh"]
+CMD ["bash", "/app/entrypoint.sh"]
 
 #END
