@@ -58,6 +58,6 @@ RUN chmod +x entrypoint.sh
 
 # Set the entrypoint to our entrypoint.sh
 
-ENTRYPOINT ["/app/entrypoint.sh"]
+CMD ["bash", "entrypoint.sh"]
 
 #END
