@@ -1557,7 +1557,7 @@ def main():
     ARGS = argumentParser()
     LANG, GEO, TZ = getCCodeLangAndOffset()
     if platform.system() == "Linux":
-        display = Display(visible=0, size=(1280, 1024), color_depth=16)
+        display = Display(visible=0, size=(900, 800))
         display.start()
     if ARGS.account_browser:
         prBlue(f"\n[INFO] Opening session for {ARGS.account_browser[0]}")

@@ -1,8 +1,3 @@
-pyvirtualdisplay
-flask
-apprise
-webdriver-manager
-packaging
 certifi
 chardet
 idna
@@ -14,4 +9,7 @@ func_timeout
 random-word==1.0.7
 pyyaml
 notifiers
+pyvirtualdisplay
+flask
+webdriver-manager
 gunicorn
