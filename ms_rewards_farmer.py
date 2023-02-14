@@ -9,8 +9,8 @@ import urllib.parse
 from pathlib import Path
 from argparse import ArgumentParser
 from datetime import date, datetime, timedelta
-from notifiers import get_notifier
 from typing import Union, List
+from notifiers import get_notifier
 import copy
 
 import ipapi
@@ -30,8 +30,8 @@ from selenium.common.exceptions import (ElementNotInteractableException,
                                         JavascriptException,
                                         ElementNotVisibleException)
 from selenium.webdriver.chrome.webdriver import WebDriver
-from selenium.webdriver.chrome.service import Service as cservice
-from selenium.webdriver.edge.service import Service as eservice
+from selenium.webdriver.chrome.service import Service as ChromeService
+from selenium.webdriver.edge.service import Service as EdgeService
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as ec
 from selenium.webdriver.support.ui import WebDriverWait
@@ -81,16 +81,16 @@ def browserSetup(isMobile: bool, user_agent: str = PC_USER_AGENT) -> WebDriver:
     options.add_experimental_option("useAutomationExtension", False)
     options.add_experimental_option("excludeSwitches", ["enable-automation"])
     if ARGS.headless and ARGS.account_browser is None:
-        options.add_argument("--headless")
+        options.add_argument("--headless=new")
     options.add_argument('log-level=3')
     options.add_argument("--start-maximized")
     if platform.system() == 'Linux':
         options.add_argument("--no-sandbox")
         options.add_argument("--disable-dev-shm-usage")
     if ARGS.edge:
-        browser = webdriver.Edge(service=eservice(EdgeChromiumDriverManager().install()), options=options)
+        browser = webdriver.Edge(service=EdgeService(EdgeChromiumDriverManager().install()), options=options)
     else:
-        browser = webdriver.Chrome(service=cservice(ChromeDriverManager().install()), options=options)
+        browser = webdriver.Chrome(service=ChromeService(ChromeDriverManager().install()), options=options)
     return browser
 
 # Define login function
@@ -1553,7 +1553,8 @@ def farmer():
 def main():
     global LANG, GEO, TZ, ARGS
     # show colors in terminal
-    os.system('color')
+    if os.name == 'nt':
+        os.system('color')
     ARGS = argumentParser()
     LANG, GEO, TZ = getCCodeLangAndOffset()
     if platform.system() == "Linux":
