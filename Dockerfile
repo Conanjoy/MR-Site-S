@@ -1,4 +1,4 @@
-FROM python:3.10.10-slim-bullseye
+FROM ubuntu:22.04
 
 # Set default environment variables
 ENV DEBIAN_FRONTEND=noninteractive
@@ -18,6 +18,8 @@ RUN apt-get update && apt-get install -y \
   tzdata \
   wget \
   gpg \
+  python3 \ 
+  python3-pip \
   xvfb \
   xfonts-cyrillic \
   xfonts-100dpi \
