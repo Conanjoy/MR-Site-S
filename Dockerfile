@@ -18,8 +18,6 @@ RUN apt-get update && apt-get install -y \
   tzdata \
   wget \
   gpg \
-  python3 \ 
-  python3-pip \
   xvfb \
   xfonts-cyrillic \
   xfonts-100dpi \
@@ -44,7 +42,7 @@ RUN apt-get update && apt-get -y install google-chrome-stable && rm -rf /var/lib
 # Add often-changed files in order to cache above
 COPY . .
 
-RUN pip3 install --no-cache-dir -r requirements.txt
+RUN pip install --no-cache-dir -r requirements.txt
 
 COPY crontab /etc/cron.d/crontab
 
