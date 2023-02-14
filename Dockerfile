@@ -38,11 +38,11 @@ RUN wget -q -O - https://dl-ssl.google.com/linux/linux_signing_key.pub | apt-key
     && echo "deb http://dl.google.com/linux/chrome/deb/ stable main" >> /etc/apt/sources.list.d/google.list
 RUN apt-get update && apt-get -y install google-chrome-stable && rm -rf /var/lib/apt/lists/*
 
+COPY requirements.txt .
+RUN pip install -r requirements.txt
 
 # Add often-changed files in order to cache above
 COPY . .
-
-RUN pip install -r requirements.txt
 
 COPY crontab /etc/cron.d/crontab
 
