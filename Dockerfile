@@ -42,7 +42,7 @@ RUN apt-get update && apt-get -y install google-chrome-stable && rm -rf /var/lib
 # Add often-changed files in order to cache above
 COPY . .
 
-RUN pip install --no-cache-dir -r requirements.txt
+RUN pip install -r requirements.txt
 
 COPY crontab /etc/cron.d/crontab
 
